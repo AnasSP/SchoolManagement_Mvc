@@ -1,0 +1,80 @@
+@model List<SchoolManagement.Models.Student>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Student List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Student" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Student
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>Registration Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var student in Model)
+        {
+        <tr>
+            <td>@student.StudentFirstName</td>
+            <td>@student.StudentLastName</td>
+            <td>@student.StudentDateOfBirth.ToShortDateString()</td>
+            <td>@student.StudentRegistrationDate.ToShortDateString()</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Student Actions">
+                    <a asp-controller="Student" asp-action="Edit" asp-route-id="@student.StudentId" class="btn btn-primary btn-sm mx-1">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+                    <form method="post" asp-action="Delete" asp-route-id="@student.StudentId" onsubmit="return confirmDelete('@student.StudentFirstName');" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm mx-1">
+                            <i class="bi bi-trash"></i> Delete
+                        </button>
+                    </form>
+                    <a asp-controller="Student" asp-action="TrackAttendance" asp-route-id="@student.StudentId" class="btn btn-info btn-sm mx-1">
+                        <i class="bi bi-calendar-check"></i> Attendance
+                    </a>
+                    <a asp-controller="Student" asp-action="AddGrade" asp-route-id="@student.StudentId" class="btn btn-success btn-sm mx-1">
+                        <i class="bi bi-journal-plus"></i> Grade
+                    </a>
+                    <a asp-controller="Student" asp-action="Details" asp-route-id="@student.StudentId" class="btn btn-info btn-sm mx-1">
+                        <i class="bi bi-info-circle"></i> Details
+                    </a>
+                </div>
+            </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+<script>
+    // Function to show a confirmation dialog before deleting
+    function confirmDelete(studentName) {
+        return confirm(`Are you sure you want to delete ${studentName}?`);
+    }
+
+    // Display success or error alerts from TempData
+    @if (TempData["success"] != null)
+    {
+    <text>
+    alert('@TempData["success"]');
+    </text>
+    }
+    @if (TempData["error"] != null)
+    {
+    <text>
+    alert('Error: @TempData["error"]');
+    </text>
+    }
+</script>
+}

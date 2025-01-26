@@ -1,0 +1,71 @@
+@model SchoolManagement.Models.Class
+
+@{
+    ViewData["Title"] = "Create Class";
+}
+
+<div class="container">
+    <form method="post">
+        <div class="row pt-4 pb-3">
+            <div class="col-6">
+                <h2 class="text-primary">Create Class</h2>
+            </div>
+        </div>
+
+        <div class="border p-3 mt-4">
+            <div class="mb-3 row p-1">
+                <label asp-for="ClassName" class="p-0">Class Name</label>
+                <input asp-for="ClassName" class="form-control" />
+                <span asp-validation-for="ClassName" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row p-1">
+                <label asp-for="GradeId" class="p-0">Grade Year</label>
+                <select asp-for="GradeId" class="form-control" asp-items="ViewBag.Grades">
+                    <option value="">-- Select Year --</option>
+                </select>
+                <span asp-validation-for="GradeId" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row p-1">
+                <label asp-for="SessionId" class="p-0">Specialization</label>
+                <select asp-for="SessionId" class="form-control" asp-items="ViewBag.Sessions">
+                    <option value="">-- Select Specialization --</option>
+                </select>
+                <span asp-validation-for="SessionId" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Class" asp-action="Index" class="btn btn-outline-secondary border form-control">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Check if TempData["error"] contains a message and display it as an alert
+        @if (TempData["error"] != null)
+        {
+            <text>
+                alert('Error: @TempData["error"]');
+            </text>
+        }
+
+        // Check if TempData["success"] contains a message and display it as an alert
+        @if (TempData["success"] != null)
+        {
+            <text>
+                alert('Success: @TempData["success"]');
+            </text>
+        }
+    </script>
+}

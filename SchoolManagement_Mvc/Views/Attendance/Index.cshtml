@@ -1,0 +1,38 @@
+@model IEnumerable<SchoolManagement.Models.Attendance>
+
+@{
+ViewData["Title"] = "Attendance Records";
+}
+
+<h1>Attendance Records</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Attendance Record</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Student</th>
+        <th>Session</th>
+        <th>Date</th>
+        <th>Present</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.Student.StudentFirstName @item.Student.StudentLastName</td>
+        <td>@item.Session.SessionName</td>
+        <td>@item.AttendanceDate.ToShortDateString()</td>
+        <td>@(item.IsPresent ? "Yes" : "No")</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.AttendanceId" class="btn btn-warning">Edit</a>
+            <a asp-action="Delete" asp-route-id="@item.AttendanceId" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>

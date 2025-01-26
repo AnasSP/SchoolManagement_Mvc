@@ -1,0 +1,143 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SchoolManagement_Mvc
+build_property.RootNamespace = SchoolManagement_Mvc
+build_property.ProjectDir = /Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Attendance/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXR0ZW5kYW5jZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Class/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xhc3MvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Class/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xhc3MvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Class/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xhc3MvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Class/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xhc3MvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Student/AddGrade.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9BZGRHcmFkZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Student/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Student/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Student/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Student/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Student/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Student/TrackAttendance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9UcmFja0F0dGVuZGFuY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Subject/AssignTeachers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViamVjdC9Bc3NpZ25UZWFjaGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Subject/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViamVjdC9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Subject/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViamVjdC9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Subject/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViamVjdC9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Subject/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViamVjdC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Teacher/AssignSubject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlci9Bc3NpZ25TdWJqZWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Teacher/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlci9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Teacher/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlci9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Teacher/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlci9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Teacher/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlci9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-9xxkwsgg8z

@@ -1,0 +1,62 @@
+@model SchoolManagement.Models.Subject
+
+@{
+    ViewData["Title"] = "Edit Subject";
+}
+
+<div class="container">
+    <form method="post" asp-action="Edit">
+        <div class="row pt-4 pb-3">
+            <div class="col-6">
+                <h2 class="text-primary">Edit Subject</h2>
+            </div>
+        </div>
+        <div class="border p-3 mt-4">
+            <!-- Hidden field for SubjectId -->
+            <input type="hidden" asp-for="SubjectId" />
+
+            <!-- Subject Name -->
+            <div class="mb-3 row p-1">
+                <label asp-for="SubjectName" class="p-0"></label>
+                <input asp-for="SubjectName" class="form-control" />
+                <span asp-validation-for="SubjectName" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Update</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Subject" asp-action="Index" class="btn btn-outline-secondary border form-control">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Check if TempData["error"] contains a message and display it as an alert
+        @if (TempData["error"] != null)
+        {
+            <text>
+                alert('Error: @TempData["error"]');
+            </text>
+        }
+
+        // Check if TempData["success"] contains a message and display it as an alert
+        @if (TempData["success"] != null)
+        {
+            <text>
+                alert('Success: @TempData["success"]');
+            </text>
+        }
+    </script>
+}

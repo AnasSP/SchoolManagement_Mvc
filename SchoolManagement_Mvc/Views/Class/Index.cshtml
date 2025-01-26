@@ -1,0 +1,72 @@
+@model List<SchoolManagement.Models.Class>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Class List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Class" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Class
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Class Name</th>
+                <th>Grade</th>
+                <th>Session</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var classItem in Model)
+            {
+                <tr>
+                    <td>@classItem.ClassName</td>
+                    <td>@classItem.Grade?.GradeName</td>
+                    <td>@($"{classItem.Session?.SessionName}")</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Class" asp-action="Edit" asp-route-id="@classItem.ClassId" class="btn btn-primary btn-sm mx-1">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <form method="post" asp-action="Delete" asp-route-id="@classItem.ClassId" onsubmit="return confirmDelete('@classItem.ClassName');">
+                                <button type="submit" class="btn btn-danger btn-sm mx-1">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </form>
+                            <a asp-controller="Class" asp-action="Details" asp-route-id="@classItem.ClassId" class="btn btn-info btn-sm mx-1">
+                                <i class="bi bi-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        // Function to show a confirmation dialog before deleting
+        function confirmDelete(className) {
+            return confirm(`Are you sure you want to delete ${className}?`);
+        }
+
+        // Display success or error alerts from TempData
+        @if (TempData["success"] != null)
+        {
+            <text>
+                alert('@TempData["success"]');
+            </text>
+        }
+        @if (TempData["error"] != null)
+        {
+            <text>
+                alert('Error: @TempData["error"]');
+            </text>
+        }
+    </script>
+}

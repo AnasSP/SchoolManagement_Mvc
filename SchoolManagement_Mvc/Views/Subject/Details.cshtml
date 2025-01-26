@@ -1,0 +1,57 @@
+@model SchoolManagement.Models.Subject
+
+@{
+    ViewData["Title"] = "Subject Details";
+}
+
+<div class="container">
+    <h2>Subject Details</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Basic Information</h4>
+            <dl class="row">
+                <dt class="col-sm-4">Subject Name</dt>
+                <dd class="col-sm-8">@Model.SubjectName</dd>
+
+                <!-- Add Grade Year -->
+                <dt class="col-sm-4">Grade Year</dt>
+                <dd class="col-sm-8">@Model.Grade?.GradeName</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Assigned Teachers</h4>
+            @if (Model.TeacherSubjects != null && Model.TeacherSubjects.Any())
+            {
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Teacher Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var teacherSubject in Model.TeacherSubjects)
+                    {
+                        <tr>
+                            <td>@teacherSubject.Teacher.TeacherFirstName @teacherSubject.Teacher.TeacherLastName</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No teachers assigned to this subject.</p>
+            }
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        <a asp-action="AssignTeachers" asp-route-subjectId="@Model.SubjectId" class="btn btn-primary">Assign Teachers</a>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+@model SchoolManagement.Models.Subject
+
+@{
+    ViewData["Title"] = "Assign Teachers";
+}
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Assign Teachers to Subject</h2>
+        </div>
+    </div>
+    <form method="post" asp-action="AssignTeachers">
+        <input type="hidden" name="subjectId" value="@ViewBag.SubjectId" />
+        <div class="border p-3 mt-4">
+            <div class="mb-3 row p-1">
+                <label class="p-0">Select Teachers</label>
+                <select name="teacherIds" class="form-control" multiple>
+                    @foreach (var teacher in ViewBag.Teachers)
+                    {
+                        <option value="@teacher.TeacherId">@teacher.TeacherFirstName @teacher.TeacherLastName</option>
+                    }
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Assign</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Subject" asp-action="Index"  class="btn btn-outline-secondary border form-control">
+                        Back to Subject
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

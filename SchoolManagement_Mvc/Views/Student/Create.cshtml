@@ -1,0 +1,116 @@
+@model SchoolManagement.Models.Student
+
+@{
+    ViewData["Title"] = "Create Student";
+}
+
+<div class="container">
+    <form method="post">
+        <div class="row pt-4 pb-3">
+            <div class="col-6">
+                <h2 class="text-primary">Create Student</h2>
+            </div>
+        </div>
+
+        <div class="border p-3 mt-4">
+            <!-- StudentFirstName -->
+            <div class="mb-3 row p-1">
+                <label asp-for="StudentFirstName" class="p-0"></label>
+                <input asp-for="StudentFirstName" class="form-control" />
+                <span asp-validation-for="StudentFirstName" class="text-danger"></span>
+            </div>
+
+            <!-- StudentLastName -->
+            <div class="mb-3 row p-1">
+                <label asp-for="StudentLastName" class="p-0"></label>
+                <input asp-for="StudentLastName" class="form-control" />
+                <span asp-validation-for="StudentLastName" class="text-danger"></span>
+            </div>
+
+            <!-- StudentDateOfBirth -->
+            <div class="mb-3 row p-1">
+                <label asp-for="StudentDateOfBirth" class="p-0"></label>
+                <input asp-for="StudentDateOfBirth" type="date" class="form-control" />
+                <span asp-validation-for="StudentDateOfBirth" class="text-danger"></span>
+            </div>
+
+            <!-- StudentRegistrationDate -->
+            <div class="mb-3 row p-1">
+                <label asp-for="StudentRegistrationDate" class="p-0"></label>
+                <input asp-for="StudentRegistrationDate" type="date" class="form-control" />
+                <span asp-validation-for="StudentRegistrationDate" class="text-danger"></span>
+            </div>
+
+            <!-- StudentKeyId -->
+            <div class="mb-3 row p-1">
+                <label asp-for="StudentKeyId" class="p-0"></label>
+                <input asp-for="StudentKeyId" class="form-control" />
+                <span asp-validation-for="StudentKeyId" class="text-danger"></span>
+            </div>
+
+            <!-- GradeId Dropdown -->
+            <div class="mb-3 row p-1">
+                <label asp-for="GradeId" class="p-0"></label>
+                <select asp-for="GradeId" class="form-control" asp-items="ViewBag.Grades">
+                    <option value="">-- Select Grade --</option>
+                </select>
+                <span asp-validation-for="GradeId" class="text-danger"></span>
+            </div>
+
+            <!-- SessionId Dropdown (Specialization) -->
+            <div class="mb-3 row p-1">
+                <label asp-for="SessionId" class="p-0">Specialization</label>
+                <select asp-for="SessionId" class="form-control" asp-items="ViewBag.Sessions">
+                    <option value="">-- Select Specialization --</option>
+                </select>
+                <span asp-validation-for="SessionId" class="text-danger"></span>
+            </div>
+
+            <!-- ClassId Dropdown -->
+            <div class="mb-3 row p-1">
+                <label asp-for="ClassId" class="p-0">Class</label>
+                <select asp-for="ClassId" class="form-control" asp-items="ViewBag.Classes">
+                    <option value="">-- Select Class --</option>
+                </select>
+                <span asp-validation-for="ClassId" class="text-danger"></span>
+            </div>
+
+
+            <!-- Submit Button -->
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Student" asp-action="Index" class="btn btn-outline-secondary border form-control">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Check if TempData["error"] contains a message and display it as an alert
+        @if (TempData["error"] != null)
+        {
+            <text>
+                alert('Error: @TempData["error"]');
+            </text>
+        }
+
+        // Check if TempData["success"] contains a message and display it as an alert
+        @if (TempData["success"] != null)
+        {
+            <text>
+                alert('Success: @TempData["success"]');
+            </text>
+        }
+    </script>
+}

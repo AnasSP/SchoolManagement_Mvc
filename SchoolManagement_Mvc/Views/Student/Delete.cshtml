@@ -1,0 +1,66 @@
+@model SchoolManagement.Models.Student
+
+@{
+    ViewData["Title"] = "Delete Student";
+}
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Delete Student</h2>
+        </div>
+    </div>
+    <form method="post" asp-action="DeletePost"> <!-- Ensure this matches the POST action name -->
+        <input asp-for="StudentId" hidden /> <!-- Hidden field for StudentId -->
+        <div class="border p-3 mt-4">
+            <div class="mb-3 row p-1">
+                <label asp-for="StudentFirstName" class="p-0"></label>
+                <input asp-for="StudentFirstName" disabled class="form-control" />
+            </div>
+            <div class="mb-3 row p-1">
+                <label asp-for="StudentLastName" class="p-0"></label>
+                <input asp-for="StudentLastName" disabled class="form-control" />
+            </div>
+            <div class="mb-3 row p-1">
+                <label asp-for="StudentDateOfBirth" class="p-0"></label>
+                <input asp-for="StudentDateOfBirth" type="date" disabled class="form-control" />
+            </div>
+            <div class="mb-3 row p-1">
+                <label asp-for="StudentRegistrationDate" class="p-0"></label>
+                <input asp-for="StudentRegistrationDate" type="date" disabled class="form-control" />
+            </div>
+            <div class="mb-3 row p-1">
+                <label asp-for="StudentKeyId" class="p-0"></label>
+                <input asp-for="StudentKeyId" disabled class="form-control" />
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-danger form-control">Delete</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Student" asp-action="Index" class="btn btn-outline-secondary border form-control">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        // Check if TempData["error"] or TempData["success"] contains a message and display it as an alert
+        @if (TempData["error"] != null)
+        {
+            <text>
+                alert('Error: @TempData["error"]');
+            </text>
+        }
+        @if (TempData["success"] != null)
+        {
+            <text>
+                alert('Success: @TempData["success"]');
+            </text>
+        }
+    </script>
+}

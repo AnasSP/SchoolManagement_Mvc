@@ -1,0 +1,77 @@
+@model SchoolManagement.Models.Teacher
+
+@{
+    ViewData["Title"] = "Create Teacher";
+}
+
+<div class="container">
+    <form method="post">
+        <div class="row pt-4 pb-3">
+            <div class="col-6">
+                <h2 class="text-primary">Create Teacher</h2>
+            </div>
+        </div>
+
+        <div class="border p-3 mt-4">
+            <div class="mb-3 row p-1">
+                <label asp-for="TeacherFirstName" class="p-0"></label>
+                <input asp-for="TeacherFirstName" class="form-control" />
+                <span asp-validation-for="TeacherFirstName" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row p-1">
+                <label asp-for="TeacherLastName" class="p-0"></label>
+                <input asp-for="TeacherLastName" class="form-control" />
+                <span asp-validation-for="TeacherLastName" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row p-1">
+                <label asp-for="TeacherDateOfBirth" class="p-0"></label>
+                <input asp-for="TeacherDateOfBirth" type="date" class="form-control" />
+                <span asp-validation-for="TeacherDateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row p-1">
+                <label asp-for="TeacherRegistrationDate" class="p-0"></label>
+                <input asp-for="TeacherRegistrationDate" type="date" class="form-control" />
+                <span asp-validation-for="TeacherRegistrationDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row p-1">
+                <label asp-for="TeacherKeyId" class="p-0"></label>
+                <input asp-for="TeacherKeyId" class="form-control" />
+                <span asp-validation-for="TeacherKeyId" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Teacher" asp-action="Index" class="btn btn-outline-secondary border form-control">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Check if TempData["error"] contains a message and display it as an alert
+        @if (TempData["error"] != null)
+        {
+            <text>
+                alert('Error: @TempData["error"]');
+            </text>
+        }
+
+        // Check if TempData["success"] contains a message and display it as an alert
+        @if (TempData["success"] != null)
+        {
+            <text>
+                alert('Success: @TempData["success"]');
+            </text>
+        }
+    </script>
+}

@@ -1,0 +1,44 @@
+@model SchoolManagement.Models.Teacher
+
+@{
+    ViewData["Title"] = "Assign Subject";
+}
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Assign Subject to Teacher</h2>
+        </div>
+    </div>
+    <form method="post" asp-action="AssignSubject">
+        <input type="hidden" name="teacherId" value="@ViewBag.TeacherId" />
+        <div class="border p-3 mt-4">
+            <div class="mb-3 row p-1">
+                <label class="p-0">Select Subject</label>
+                <select name="subjectId" class="form-control">
+                    @if (ViewBag.UnassignedSubjects != null && ViewBag.UnassignedSubjects.Count > 0)
+                    {
+                        foreach (var subject in ViewBag.UnassignedSubjects)
+                        {
+                            <option value="@subject.SubjectId">@subject.SubjectName</option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="">No unassigned subjects available</option>
+                    }
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Assign</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Teacher" asp-action="Details" asp-route-id="@ViewBag.TeacherId" class="btn btn-outline-secondary border form-control">
+                        Back to Teacher
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

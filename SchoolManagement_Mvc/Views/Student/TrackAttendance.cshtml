@@ -1,0 +1,70 @@
+@model SchoolManagement.Models.Attendance
+
+@{
+    ViewData["Title"] = "Track Attendance";
+}
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Track Attendance</h2>
+        </div>
+    </div>
+    <form method="post" asp-action="TrackAttendance">
+        <div class="border p-3 mt-4">
+            <!-- Hidden fields for StudentId and SessionId -->
+            <input type="hidden" asp-for="StudentId" />
+            <input type="hidden" asp-for="SessionId" />
+
+            <!-- AttendanceDate -->
+            <div class="mb-3 row p-1">
+                <label asp-for="AttendanceDate" class="p-0"></label>
+                <input asp-for="AttendanceDate" type="date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="AttendanceDate" class="text-danger"></span>
+            </div>
+
+            <!-- IsPresent -->
+            <div class="mb-3 row p-1">
+                <label asp-for="IsPresent" class="p-0"></label>
+                <input asp-for="IsPresent" type="checkbox" class="form-check-input" />
+                <span asp-validation-for="IsPresent" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Save</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Student" asp-action="Index" class="btn btn-outline-secondary border form-control">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Check if TempData["success"] contains a message and display it as an alert
+        @if (TempData["success"] != null)
+        {
+            <text>
+                alert('@TempData["success"]');
+            </text>
+        }
+
+        // Check if TempData["error"] contains a message and display it as an alert
+        @if (TempData["error"] != null)
+        {
+            <text>
+                alert('Error: @TempData["error"]');
+            </text>
+        }
+    </script>
+}

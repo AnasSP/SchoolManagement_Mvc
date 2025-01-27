@@ -14,5 +14,6 @@ namespace SchoolManagement.Models
 
         // Navigation property for the join table
         public ICollection<TeacherSubject> TeacherSubjects { get; set; } = new List<TeacherSubject>();
+
     }
 }

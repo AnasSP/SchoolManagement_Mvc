@@ -167,3 +167,4 @@
 /Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/obj/Debug/net8.0/SchoolManagement_Mvc.pdb
 /Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/obj/Debug/net8.0/SchoolManagement_Mvc.genruntimeconfig.cache
 /Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/obj/Debug/net8.0/ref/SchoolManagement_Mvc.dll
+/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/obj/Debug/net8.0/SchoolManagement_Mvc.sourcelink.json

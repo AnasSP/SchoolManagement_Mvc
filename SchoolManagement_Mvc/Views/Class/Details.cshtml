@@ -1,7 +1,7 @@
 @model SchoolManagement.Models.Class
 
 @{
-ViewData["Title"] = "Class Details";
+    ViewData["Title"] = "Class Details";
 }
 
 <div class="container">
@@ -29,31 +29,12 @@ ViewData["Title"] = "Class Details";
             <h4>Students in this Class</h4>
             @if (Model.Students != null && Model.Students.Any())
             {
-            <table class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Date of Birth</th>
-                    <th>Registration Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (var student in Model.Students)
-                {
-                <tr>
-                    <td>@student.StudentFirstName</td>
-                    <td>@student.StudentLastName</td>
-                    <td>@student.StudentDateOfBirth.ToShortDateString()</td>
-                    <td>@student.StudentRegistrationDate.ToShortDateString()</td>
-                </tr>
-                }
-                </tbody>
-            </table>
+                <!-- Reuse the Index.cshtml for Students -->
+                @await Html.PartialAsync("~/Views/Student/Index.cshtml", Model.Students)
             }
             else
             {
-            <p>No students are enrolled in this class.</p>
+                <p>No students are enrolled in this class.</p>
             }
         </div>
     </div>

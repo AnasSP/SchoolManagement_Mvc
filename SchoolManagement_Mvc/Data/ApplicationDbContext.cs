@@ -200,6 +200,11 @@ public class ApplicationDbContext : DbContext
             .HasForeignKey(ts => ts.SubjectId)
             .OnDelete(DeleteBehavior.Cascade); // Cascade delete for Subject
         
+        modelBuilder.Entity<Class>()
+            .HasMany(c => c.Students)
+            .WithOne(s => s.Class)
+            .OnDelete(DeleteBehavior.Cascade);
+        
     }
     
     

@@ -57,15 +57,6 @@
                 <span asp-validation-for="GradeId" class="text-danger"></span>
             </div>
 
-            <!-- SessionId Dropdown (Specialization) -->
-            <div class="mb-3 row p-1">
-                <label asp-for="SessionId" class="p-0">Specialization</label>
-                <select asp-for="SessionId" class="form-control" asp-items="ViewBag.Sessions">
-                    <option value="">-- Select Specialization --</option>
-                </select>
-                <span asp-validation-for="SessionId" class="text-danger"></span>
-            </div>
-
             <!-- ClassId Dropdown -->
             <div class="mb-3 row p-1">
                 <label asp-for="ClassId" class="p-0">Class</label>
@@ -75,6 +66,14 @@
                 <span asp-validation-for="ClassId" class="text-danger"></span>
             </div>
 
+            <!-- SessionId Dropdown -->
+            <div class="mb-3 row p-1">
+                <label asp-for="SessionId" class="p-0">Specialization</label>
+                <select asp-for="SessionId" class="form-control" asp-items="ViewBag.Sessions">
+                    <option value="">-- Select Specialization --</option>
+                </select>
+                <span asp-validation-for="SessionId" class="text-danger"></span>
+            </div>
 
             <!-- Submit Button -->
             <div class="row">

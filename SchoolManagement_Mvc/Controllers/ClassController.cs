@@ -172,7 +172,12 @@ namespace SchoolManagement_Mvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-            var classItem = _db.Classes.Find(id);
+            var classItem = _db.Classes
+                .Include(c => c.Students) // Include related Students
+                .Include(c => c.Teachers) // Include related Teachers
+                .Include(c => c.Subjects) // Include related Subjects
+                .FirstOrDefault(c => c.ClassId == id);
+
             if (classItem == null)
             {
                 TempData["error"] = "Class not found.";
@@ -181,13 +186,26 @@ namespace SchoolManagement_Mvc.Controllers
 
             try
             {
+                // Remove related Students
+                _db.Students.RemoveRange(classItem.Students);
+
+                // Remove related Teachers
+                _db.Teachers.RemoveRange(classItem.Teachers);
+
+                // Remove related Subjects
+                _db.Subjects.RemoveRange(classItem.Subjects);
+
+                // Remove the class
                 _db.Classes.Remove(classItem);
+
                 _db.SaveChanges();
                 TempData["success"] = $"Class {classItem.ClassName} deleted successfully.";
             }
             catch (Exception ex)
             {
-                TempData["error"] = $"Failed to delete class. Error: {ex.Message}";
+                // Log the inner exception for debugging
+                var innerException = ex.InnerException?.Message;
+                TempData["error"] = $"Failed to delete class. Error: {ex.Message} Inner Exception: {innerException}";
             }
 
             return RedirectToAction("Index");

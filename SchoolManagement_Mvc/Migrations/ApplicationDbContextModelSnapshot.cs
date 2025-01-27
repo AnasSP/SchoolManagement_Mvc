@@ -207,9 +207,6 @@ namespace SchoolManagement_Mvc.Migrations
                     b.Property<int?>("ClassId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClassId1")
-                        .HasColumnType("int");
-
                     b.Property<int?>("GradeId")
                         .HasColumnType("int");
 
@@ -240,8 +237,6 @@ namespace SchoolManagement_Mvc.Migrations
                     b.HasKey("StudentId");
 
                     b.HasIndex("ClassId");
-
-                    b.HasIndex("ClassId1");
 
                     b.HasIndex("GradeId");
 
@@ -481,13 +476,9 @@ namespace SchoolManagement_Mvc.Migrations
             modelBuilder.Entity("SchoolManagement.Models.Student", b =>
                 {
                     b.HasOne("SchoolManagement.Models.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("SchoolManagement.Models.Class", null)
                         .WithMany("Students")
-                        .HasForeignKey("ClassId1");
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SchoolManagement.Models.Grade", "Grade")
                         .WithMany()
@@ -506,13 +497,16 @@ namespace SchoolManagement_Mvc.Migrations
 
             modelBuilder.Entity("SchoolManagement.Models.Subject", b =>
                 {
-                    b.HasOne("SchoolManagement.Models.Class", null)
+                    b.HasOne("SchoolManagement.Models.Class", "Class")
                         .WithMany("Subjects")
-                        .HasForeignKey("ClassId");
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SchoolManagement.Models.Grade", "Grade")
                         .WithMany()
                         .HasForeignKey("GradeId");
+
+                    b.Navigation("Class");
 
                     b.Navigation("Grade");
                 });
@@ -535,9 +529,12 @@ namespace SchoolManagement_Mvc.Migrations
 
             modelBuilder.Entity("SchoolManagement.Models.Teacher", b =>
                 {
-                    b.HasOne("SchoolManagement.Models.Class", null)
+                    b.HasOne("SchoolManagement.Models.Class", "Class")
                         .WithMany("Teachers")
-                        .HasForeignKey("ClassId");
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Class");
                 });
 
             modelBuilder.Entity("SchoolManagement.Models.TeacherSession", b =>

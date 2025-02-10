@@ -12,6 +12,10 @@ namespace SchoolManagement.Models
         public string TeacherLastName { get; set; }
         public DateTime TeacherDateOfBirth { get; set; }
         public DateTime TeacherRegistrationDate { get; set; }
+        
+        [Unique]
+        public string Email { get; set; }
+        public string Password { get; set; }
         public string TeacherKeyId { get; set; }
 
         // Navigation property for Subjects taught by the teacher

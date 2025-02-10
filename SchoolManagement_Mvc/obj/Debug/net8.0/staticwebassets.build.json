@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sB+89vUABSWnBRnNy0xwwebZvKA+A2b/96rbh+jOtKw=",
+  "Hash": "/HnOY4vKpQr+2bybud9sK0vh0UOVPpP4kzr4+NWM1qw=",
   "Source": "SchoolManagement_Mvc",
   "BasePath": "_content/SchoolManagement_Mvc",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/obj/Debug/net8.0/scopedcss/projectbundle/SchoolManagement_Mvc.bundle.scp.css"
+    },
+    {
+      "Identity": "/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/wwwroot/css/account.css",
+      "SourceId": "SchoolManagement_Mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/wwwroot/",
+      "BasePath": "_content/SchoolManagement_Mvc",
+      "RelativePath": "css/account.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/account.css"
     },
     {
       "Identity": "/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/wwwroot/css/site.css",

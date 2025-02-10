@@ -17,6 +17,11 @@ namespace SchoolManagement.Models
         public DateTime StudentDateOfBirth { get; set; }
         public DateTime StudentRegistrationDate { get; set; }
         public bool Selected { get; set; }
+        
+        
+        [Unique]
+        public string Email { get; set; }
+        public string Password { get; set; }
 
         [Unique]
         public string StudentKeyId { get; set; }

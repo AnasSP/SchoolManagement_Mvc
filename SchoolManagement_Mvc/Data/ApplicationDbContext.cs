@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagement_Mvc.Models;
 using SchoolManagement.Models;
 
 namespace SchoolManagement_Mvc.Data;
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<Users>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)

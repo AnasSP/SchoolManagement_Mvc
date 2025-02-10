@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Models;
@@ -9,10 +10,13 @@ namespace SchoolManagement_Mvc.Controllers
     public class TeacherController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly UserManager<Users> _userManager;
 
-        public TeacherController(ApplicationDbContext db)
+
+        public TeacherController(ApplicationDbContext db, UserManager<Users> userManager)
         {
             _db = db;
+            _userManager = userManager;
         }
 
         // GET: Teacher
@@ -30,12 +34,16 @@ namespace SchoolManagement_Mvc.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Teacher teacher)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    // Hash the password before saving it to the database
+                    teacher.Password = BCrypt.Net.BCrypt.HashPassword(teacher.Password);
+
                     _db.Teachers.Add(teacher);
                     _db.SaveChanges();
                     TempData["success"] = "Teacher created successfully.";
@@ -45,11 +53,6 @@ namespace SchoolManagement_Mvc.Controllers
                 {
                     TempData["error"] = "Failed to create teacher. Error: " + ex.Message;
                 }
-            }
-            else
-            {
-                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
-                TempData["error"] = "Invalid model state. Errors: " + string.Join(", ", errors);
             }
 
             return View(teacher);
@@ -221,6 +224,24 @@ namespace SchoolManagement_Mvc.Controllers
 
             // Redirect to the teacher's details page
             return RedirectToAction("Details", new { id = teacherId });
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> TeacherDashboard(int id)
+        {
+            // Fetch the teacher associated with the given TeacherId
+            var teacher = await _db.Teachers
+                .Include(t => t.TeacherSubjects)
+                .ThenInclude(ts => ts.Subject)
+                .FirstOrDefaultAsync(t => t.TeacherId == id);
+
+            if (teacher == null)
+            {
+                TempData["error"] = "Teacher not found.";
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(teacher);
         }
     }
 }

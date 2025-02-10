@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/SchoolManagement_Mvc.bundle.scp.css"
     },
     {
+      "Id": "/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/wwwroot/css/account.css",
+      "PackagePath": "staticwebassets/css/account.css"
+    },
+    {
       "Id": "/Users/anas/RiderProjects/dotNet/SchoolManagement_Mvc/SchoolManagement_Mvc/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },

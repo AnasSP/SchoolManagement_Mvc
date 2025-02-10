@@ -1,18 +1,23 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Models;
 using SchoolManagement_Mvc.Data;
+using SchoolManagement_Mvc.Models;
 
 namespace SchoolManagement_Mvc.Controllers
 {
     public class StudentController : Controller
 {
     private readonly ApplicationDbContext _db;
+    private readonly UserManager<Users> _userManager;
 
-    public StudentController(ApplicationDbContext db)
+
+    public StudentController(ApplicationDbContext db, UserManager<Users> userManager)
     {
         _db = db;
+        _userManager = userManager;
     }
 
     // GET: Student
@@ -56,16 +61,18 @@ namespace SchoolManagement_Mvc.Controllers
     
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult Create(Student student)
     {
         if (ModelState.IsValid)
         {
             try
             {
-                // Add the student to the database
+                // Hash the password before saving it to the database
+                student.Password = BCrypt.Net.BCrypt.HashPassword(student.Password);
+
                 _db.Students.Add(student);
                 _db.SaveChanges();
-
                 TempData["success"] = "Student created successfully.";
                 return RedirectToAction("Index");
             }
@@ -73,12 +80,6 @@ namespace SchoolManagement_Mvc.Controllers
             {
                 TempData["error"] = "Failed to create student. Error: " + ex.Message;
             }
-        }
-        else
-        {
-            // Collect validation errors
-            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
-            TempData["error"] = "Invalid model state. Errors: " + string.Join(", ", errors);
         }
 
         // Repopulate dropdowns if the model is invalid
@@ -88,14 +89,12 @@ namespace SchoolManagement_Mvc.Controllers
                 Value = g.GradeId.ToString(),
                 Text = g.GradeName
             }).ToList();
-
         ViewBag.Sessions = _db.Sessions
             .Select(s => new SelectListItem
             {
                 Value = s.SessionId.ToString(),
                 Text = s.SessionName
             }).ToList();
-        
         ViewBag.Classes = _db.Classes
             .Select(c => new SelectListItem
             {
@@ -461,6 +460,58 @@ namespace SchoolManagement_Mvc.Controllers
         }
 
         return View(enroll);
+    }
+    
+    [HttpGet]
+    public IActionResult StudentDashboard(int? id)
+    {
+        if (id == null || id == 0)
+        {
+            return NotFound();
+        }
+
+        // Fetch the student with related data
+        var student = _db.Students
+            .Include(s => s.YearlySessions) // Include attendances
+            .ThenInclude(e => e.Session)
+            .Include(s => s.YearlySessions)
+            .ThenInclude(e => e.Grade)
+            .Include(s => s.Grade) // Include Grade
+            .Include(s => s.Class) // Include Class
+            .Include(s => s.Session) // Include Session
+            .FirstOrDefault(s => s.StudentId == id);
+
+        if (student == null)
+        {
+            return NotFound();
+        }
+
+        // Load attendances for the student
+        var attendances = _db.Attendances
+            .Where(a => a.StudentId == id)
+            .Include(a => a.Session)
+            .ToList();
+
+        // Load grades for the student with subject information
+        var grades = _db.Enrolls
+            .Where(e => e.StudentId == id)
+            .Join(
+                _db.Subjects, // Join with Subjects table
+                enroll => enroll.SubjectId,
+                subject => subject.SubjectId,
+                (enroll, subject) => new EnrollWithSubjectViewModel
+                {
+                    Enroll = enroll,
+                    Subject = subject
+                }
+            )
+            .ToList();
+
+        // Pass data to ViewBag
+        ViewBag.Attendances = attendances ?? new List<Attendance>();
+        ViewBag.Grades = grades ?? new List<EnrollWithSubjectViewModel>();
+
+        return View(student);
     }
     
 }
